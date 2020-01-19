@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.myotter</groupId>
+  <artifactId>myotter</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  	<dependency>
+			<groupId>com.alibaba.otter</groupId>
+			<artifactId>shared.etl</artifactId>
+			<version>4.2.15</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba.otter/node.extend -->
+		<dependency>
+			<groupId>com.alibaba.otter</groupId>
+			<artifactId>node.extend</artifactId>
+			<version>4.2.15</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.shyiko</groupId>
+		    <artifactId>mysql-binlog-connector-java</artifactId>
+		    <version>0.13.0</version>
+		</dependency>
+		
+     <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>1.4.7</version>
+    </dependency>
+    
+  </dependencies>
+  
+   <build>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <!-- 此处指定main方法入口的class -->
+                            <mainClass>com.email.CopyOfRootConfig</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
